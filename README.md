@@ -9,13 +9,16 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
       - a one-to-many association (singular media to reviews)
       - a many-to-many association (multiple media to many users)
     - Data Validation
-    - Error Home Page
+    - Error Handling
     - Home Page
     - Thoughtful and delightful design
       - Use framework or CSS, or both
     - Heroku deployment
     - 60+ commits
     - Useful README (boom, this right here, off to a good start)
+  - Bonuses
+    - Responsive Design for tablet or phone usage
+    - Light mode / dark mode toggle
 
 ## Technologies Used
     - Django  
