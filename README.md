@@ -41,16 +41,7 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
 [Wireframes]  
 
 ## User Stories
-AAU, I want to see a description of the website when I first visit.
-AAU, I want to be able to login or create a new account to login.
-AAU, I want to see a list of recommended media to watch.
-AAU, I want to be able to click on a show title and see more information about it.
-AAU, I want to add my own thumbs up to a listed show that I liked as well.
-AAU, I want to be able to add a review to the show it I want.
-AAU, I want to be able to edit or delete the review in case I change my mind or see a typo.
-AAU, I want to add a new show to the list of recommended shows.
-AAU, I want to browse other people profiles to see all of the shows they have given a thumbs up.
-AAU, I want to logout so someone can't use my account and make it look like I have bad taste.
+![User Stories](Planning/user_stories.png "User Stories")
 
 ## ERD
 ![ERD](Planning/ERD.png "ERD")
