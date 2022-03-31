@@ -38,7 +38,7 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
 [User Flow]()  
 [ERD](Planning/ERD.png)  
 [Color Pallet]()  
-[Wireframes]()  
+[Wireframes]  
 
 ## User Stories
 AAU, I want to see a description of the website when I first visit.
@@ -52,6 +52,10 @@ AAU, I want to add a new show to the list of recommended shows.
 AAU, I want to browse other people profiles to see all of the shows they have given a thumbs up.
 AAU, I want to logout so someone can't use my account and make it look like I have bad taste.
 
+## ERD
+
+
+## Wireframes
 
 ## Installation/scripts
 
