@@ -30,7 +30,7 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
 [User Research]()  
 [User Stories]()  
 [User Flow]()  
-[ERD]()  
+[ERD](Planning/ERD.png)  
 [Color Pallet]()  
 [Wireframes]()  
 
