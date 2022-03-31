@@ -53,9 +53,15 @@ AAU, I want to browse other people profiles to see all of the shows they have gi
 AAU, I want to logout so someone can't use my account and make it look like I have bad taste.
 
 ## ERD
-
+![ERD](Planning/ERD.png "ERD")
 
 ## Wireframes
+![Landing Page](Planning/wireframes/1_landing_page.png "Landing Page")
+![Create User](Planning/wireframes/2_create_user.png "Create User")
+![Show Index](Planning/wireframes/3_show_index.png "Show Index")
+![Show Detail](Planning/wireframes/4_show_detail.png "Show Detail")
+![User Detail](Planning/wireframes/5_user_detail.png "User Detail")
+![User Index](Planning/wireframes/6_user_index.png "User Index")
 
 ## Installation/scripts
 
