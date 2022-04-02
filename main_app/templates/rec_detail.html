@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <img src="{{dog.img}}" alt="picture of {{dog.name}}" style="max-width: 400px">
+    </div>
+    <div>
+        <h1>{{dog.name}}</h1>
+        <h3>Age: {{dog.age}}</h3>
+        <h3>Gender: {{dog.gender}}</h3>
+        <h3>Breed: {{dog.breed}}</h3>
+        <p>Adopted by: 
+            <a href="/user/{{ dog.user.username }}">{{ dog.user.username }}</a>
+        </p>
+        <p>Toys Owned:</p>
+        {% for dogtoy in dog.dogtoys.all %}
+            <div>{{dogtoy.name}}</div>
+        {% empty %}
+            <div>{{dog.name}} Has No Toys 😢</div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <a href="{% url 'dog_update' dog.pk %}">Update</a>
+        <a href="{% url 'dog_delete' dog.pk %}">Delete</a>
+    </div>
+</div>
+{% endblock %}
+
+        <a href="{% url 'rec_detail' rec.pk %}">
+            <h3>Title: {{rec.title}}</h3>
+        </a>
+
+    <h3>Title: {{rec.title}}</h3>
+    <h3>Aired: {{rec.dates}}</h3>
+    <h3>Genre: {{rec.genre}}</h3>
+    <h3>Where to watch: {{rec.stream}}</h3>
+    <h3>Description: {{rec.description}}</h3>

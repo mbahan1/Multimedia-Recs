@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    MediaRecs | Recs
+{% endblock %}
+
+{% block content %}
+    <h1>All Recs:</h1>
+    {% for rec in recs %}
+        <img src="{{rec.img}}" alt="{{rec.title}}" style="max-width: 200px">
+        <h3>Title: {{rec.title}}</h3>
+        <h4>Genre: {{rec.genre}}</h4>
+    {% endfor %}
+{% endblock %}
