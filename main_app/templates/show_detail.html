@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <img src="{{dog.img}}" alt="picture of {{dog.name}}" style="max-width: 400px">
+    </div>
+        <h3>Title: {{show.title}}</h3>
+        <h3>Aired: {{show.dates}}</h3>
+        <h3>Genre: {{show.genre}}</h3>
+        <h3>Where to watch: {{show.stream}}</h3>
+        <h3>Description: {{show.description}}</h3>
+        <p>Recommended by: 
+            <a href="/user/{{ dog.user.username }}">{{ dog.user.username }}</a>
+        </p>
+        <p>Reviews:</p>
+        {% for review in show.reviews.all %}
+            <div>{{review.body}}</div>
+            <div>{{review.user}}</div>
+        {% empty %}
+            <div>{{show.title}} Has No Reviews 😢</div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <a href="{% url 'show_update' show.pk %}">Update</a>
+        <a href="{% url 'show_delete' show.pk %}">Delete</a>
+    </div>
+</div>
+{% endblock %}

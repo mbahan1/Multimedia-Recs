@@ -50,7 +50,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) #1:m
     date_written = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.user
+        return self.body
 
 class Show(models.Model):
     title = models.CharField(max_length=150)
