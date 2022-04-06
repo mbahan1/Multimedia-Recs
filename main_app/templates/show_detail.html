@@ -15,7 +15,11 @@
         <h3>Where to watch: {{show.stream}}</h3>
         <h3>Description: {{show.description}}</h3>
         <p>Recommended by: 
-            <a href="/user/{{ show.user.username }}">{{ show.user.username }}</a>
+        {% for user in show.user.all %}
+            <div>{{user.username}}</div>
+        {% empty %}
+            <div>{{show.title}} Has No Thumbs Up 😢</div>
+        {% endfor %}
         </p>
         <p>Reviews:</p>
         {% for review in show.reviews.all %}
