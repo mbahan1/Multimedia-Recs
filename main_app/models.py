@@ -62,7 +62,7 @@ class Show(models.Model):
     description = models.TextField()
     thumbs = models.IntegerField()
     user = models.ManyToManyField(User) #m:m
-    reviews = models.ManyToManyField(Review) #1:m
+    reviews = models.ForeignKey(Review, on_delete=models.CASCADE) #1:m
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
