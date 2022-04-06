@@ -12,7 +12,21 @@
     </head>
     <body>
         <nav>
-
+            <a href="/admin">Admin</a>
+            <span> | </span>
+            <a href="/">Home</a>
+            <span> | </span>
+            <a href="/about">About</a>
+            <span> | </span>
+            <a href="/shows">Shows</a>
+            <span> | </span>
+            <form id="search_box">
+                <div>
+                    <!-- this seacrches for dog name -->
+                    <input id="search_bar" type="text" name="title" placeholder="show title"/>
+                    <input id="search_sub" type="submit" value="Search"/>
+                </div>
+            </form>
         </nav>
         
         {% block content %}
