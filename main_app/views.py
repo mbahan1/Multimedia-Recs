@@ -46,7 +46,7 @@ class Show_List(TemplateView):
             context['header'] = "Our Shows"
         return context
 
-@method_decorator(login_required, title='dispatch')
+@method_decorator(login_required, name='dispatch')
 class Show_Create(CreateView):
     model = Show
     fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
@@ -63,7 +63,7 @@ class Show_Detail(DetailView):
     model = Show
     template_name="show_detail.html"
 
-@method_decorator(login_required, title='dispatch')
+@method_decorator(login_required, name='dispatch')
 class Show_Update(UpdateView):
     model = Show
     fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
@@ -71,7 +71,7 @@ class Show_Update(UpdateView):
     def get_success_url(self):
         return reverse('show_detail', kwargs={'pk': self.object.pk})
 
-@method_decorator(login_required, title='dispatch')
+@method_decorator(login_required, name='dispatch')
 class Show_Delete(DeleteView):
     model = Show
     template_name = "show_delete_confirmation.html"
@@ -93,21 +93,21 @@ def reviews_show(request, review_id):
     review = Review.objects.get(id=review_id)
     return render(request, 'review_show.html', {'review': review})
 
-@method_decorator(login_required, body='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ReviewCreate(CreateView):
     model = Review
     fields = '__all__'
     template_name = "review_form.html"
     success_url = '/reviews'
 
-@method_decorator(login_required, body='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ReviewUpdate(UpdateView):
     model = Review
     fields = ['body', 'user', 'date_written']
     template_name = "review_update.html"
     success_url = '/reviews'
 
-@method_decorator(login_required, body='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ReviewDelete(DeleteView):
     model = Review
     template_name = "review_confirm_delete.html"

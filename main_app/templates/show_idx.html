@@ -11,6 +11,6 @@
         <a href="{% url 'show_detail' show.pk %}">
             <h3>Title: {{show.title}}</h3>
         </a>
-        <h4>Genre: {{show.genre}}</h4>
+        <h4>Genre: {{show.get_genre_display}}</h4>
     {% endfor %}
 {% endblock %}

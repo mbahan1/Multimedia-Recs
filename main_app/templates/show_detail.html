@@ -3,15 +3,19 @@
 {% block content %}
 <div class="container">
     <div>
-        <img src="{{dog.img}}" alt="picture of {{dog.name}}" style="max-width: 400px">
+        <img src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
     </div>
         <h3>Title: {{show.title}}</h3>
-        <h3>Aired: {{show.dates}}</h3>
-        <h3>Genre: {{show.genre}}</h3>
+        {% if show.first_aired == show.last_aired %}
+            <h3>Aired: {{show.first_aired}}</h3>
+        {% else %}
+            <h3>Aired: {{show.first_aired}} - {{show.last_aired}}</h3>
+        {% endif %}
+        <h3>Genre: {{show.get_genre_display}}</h3>
         <h3>Where to watch: {{show.stream}}</h3>
         <h3>Description: {{show.description}}</h3>
         <p>Recommended by: 
-            <a href="/user/{{ dog.user.username }}">{{ dog.user.username }}</a>
+            <a href="/user/{{ show.user.username }}">{{ show.user.username }}</a>
         </p>
         <p>Reviews:</p>
         {% for review in show.reviews.all %}
