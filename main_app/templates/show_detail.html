@@ -17,7 +17,7 @@
                 <h3>Aired: {{show.first_aired}} - {{show.last_aired}}</h3>
             {% endif %}
             <h3>Genre: {{show.get_genre_display}}</h3>
-            <h3>Where to watch: {{show.stream}}</h3>
+            <h3>Where to watch: {{show.get_stream_service_display}}</h3>
             <h3>Description: {{show.description}}</h3>
             <p>Recommended by: 
             {% for user in show.user.all %}
@@ -26,6 +26,7 @@
                 <div>{{show.title}} Has No Thumbs Up 😢</div>
             {% endfor %}
             </p>
+            <a href="{% url 'reviews_create' %}">Add a Review</a>
             <p>Reviews:</p>
             {% for review in show.reviews.all %}
                 <div>{{review.body}}</div>

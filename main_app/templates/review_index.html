@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | Reviews
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>All Review List</h1>
+        {% for review in reviews %}
+            <div>
+                <a href="{% url 'reviews_show' review.id %}">
+                    <div class="card-content">
+                        <strong>{{ review.show.title }}</strong>
+                        <p>Author: {{ review.user.username }}</p>
+                        <span>{{ review.body }}</span>
+                    </div>
+                </a>
+            </div>
+            <hr/>
+        {% endfor %}
+</div>
+{% endblock %}

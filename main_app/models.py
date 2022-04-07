@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 GENRE_CHOICES = (	
@@ -48,7 +49,7 @@ STREAM_CHOICES = (
 class Review(models.Model):
     body = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE) #1:m
-    date_written = models.DateTimeField(auto_now_add=True)
+    date_written = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.body
 
@@ -63,7 +64,7 @@ class Show(models.Model):
     thumbs = models.IntegerField()
     user = models.ManyToManyField(User) #m:m
     reviews = models.ForeignKey(Review, null=True, blank=True, on_delete=models.CASCADE) #1:m
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.title
