@@ -41,7 +41,7 @@ class Show_List(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class Show_Create(CreateView):
     model = Show
-    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
+    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description']
     template_name = "show_create.html"
     # def get_success_url(self):
     #     return reverse('show_detail', kwargs={'pk': self.object.pk})
