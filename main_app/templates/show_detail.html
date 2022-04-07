@@ -28,10 +28,10 @@
             </p>
             <a href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
             <p>Reviews:</p>
-            {% for show in review.show_set.all %}
-                <div>Author:{{review.user.username}}</div>
+            {% for review in show.review_set.all %}
+                <strong>{{review.user.username}}:</strong>
                 <div>{{review.body}}</div>
-
+                <br>
             {% empty %}
                 <div>{{show.title}} Has No Reviews 😢</div>
             {% endfor %}
