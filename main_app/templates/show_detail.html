@@ -26,11 +26,12 @@
                 <div>{{show.title}} Has No Thumbs Up 😢</div>
             {% endfor %}
             </p>
-            <a href="{% url 'reviews_create' %}">Add a Review</a>
+            <a href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
             <p>Reviews:</p>
-            {% for review in show.reviews.all %}
+            {% for show in review.show_set.all %}
+                <div>Author:{{review.user.username}}</div>
                 <div>{{review.body}}</div>
-                <div>{{review.user}}</div>
+
             {% empty %}
                 <div>{{show.title}} Has No Reviews 😢</div>
             {% endfor %}

@@ -46,13 +46,6 @@ STREAM_CHOICES = (
     ("tcm", "TCM"),
 )
 
-class Review(models.Model):
-    body = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE) #1:m
-    date_written = models.DateTimeField(default=timezone.now)
-    def __str__(self):
-        return self.body
-
 class Show(models.Model):
     title = models.CharField(max_length=150)
     first_aired = models.IntegerField()
@@ -63,11 +56,18 @@ class Show(models.Model):
     description = models.TextField()
     thumbs = models.IntegerField()
     user = models.ManyToManyField(User) #m:m
-    reviews = models.ForeignKey(Review, null=True, blank=True, on_delete=models.CASCADE) #1:m
+    # reviews = models.ForeignKey(Review, null=True, blank=True, on_delete=models.CASCADE) #1:m
     created_at = models.DateTimeField(default=timezone.now)
-    
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['thumbs']
+
+class Review(models.Model):
+    body = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE) #1:m
+    show = models.ForeignKey(Show, on_delete=models.CASCADE) #1:m
+    date_written = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.show.title
