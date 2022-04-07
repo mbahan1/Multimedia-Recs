@@ -58,7 +58,7 @@ class Show_Detail(DetailView):
 @method_decorator(login_required, name='dispatch')
 class Show_Update(UpdateView):
     model = Show
-    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
+    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description']
     template_name = "show_update.html"
     def get_success_url(self):
         return reverse('show_detail', kwargs={'pk': self.object.pk})

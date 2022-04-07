@@ -14,8 +14,9 @@
                 <a href="{% url 'reviews_show' review.id %}">
                     <div class="card-content">
                         <strong>{{ review.show.title }}</strong>
-                        <p>Author: {{ review.user.username }}</p>
+                        <p>{{ review.user.username }}:</p>
                         <span>{{ review.body }}</span>
+                        
                     </div>
                 </a>
             </div>
