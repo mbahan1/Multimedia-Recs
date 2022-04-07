@@ -1,38 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | Show Info
+{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div>
-        <img src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
-    </div>
-        <h3>Title: {{show.title}}</h3>
-        {% if show.first_aired == show.last_aired %}
-            <h3>Aired: {{show.first_aired}}</h3>
-        {% else %}
-            <h3>Aired: {{show.first_aired}} - {{show.last_aired}}</h3>
-        {% endif %}
-        <h3>Genre: {{show.get_genre_display}}</h3>
-        <h3>Where to watch: {{show.stream}}</h3>
-        <h3>Description: {{show.description}}</h3>
-        <p>Recommended by: 
-        {% for user in show.user.all %}
-            <div>{{user.username}}</div>
-        {% empty %}
-            <div>{{show.title}} Has No Thumbs Up 😢</div>
-        {% endfor %}
-        </p>
-        <p>Reviews:</p>
-        {% for review in show.reviews.all %}
-            <div>{{review.body}}</div>
-            <div>{{review.user}}</div>
-        {% empty %}
-            <div>{{show.title}} Has No Reviews 😢</div>
-        {% endfor %}
-    </div>
+    <div class="container">
+        <div>
+            <img src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
+        </div>
+            <h3>Title: {{show.title}}</h3>
+            {% if show.first_aired == show.last_aired %}
+                <h3>Aired: {{show.first_aired}}</h3>
+            {% else %}
+                <h3>Aired: {{show.first_aired}} - {{show.last_aired}}</h3>
+            {% endif %}
+            <h3>Genre: {{show.get_genre_display}}</h3>
+            <h3>Where to watch: {{show.stream}}</h3>
+            <h3>Description: {{show.description}}</h3>
+            <p>Recommended by: 
+            {% for user in show.user.all %}
+                <div>{{user.username}}</div>
+            {% empty %}
+                <div>{{show.title}} Has No Thumbs Up 😢</div>
+            {% endfor %}
+            </p>
+            <p>Reviews:</p>
+            {% for review in show.reviews.all %}
+                <div>{{review.body}}</div>
+                <div>{{review.user}}</div>
+            {% empty %}
+                <div>{{show.title}} Has No Reviews 😢</div>
+            {% endfor %}
+        </div>
 
-    <div>
-        <a href="{% url 'show_update' show.pk %}">Update</a>
-        <a href="{% url 'show_delete' show.pk %}">Delete</a>
+        <div>
+            <a href="{% url 'show_update' show.pk %}">Update</a>
+            <a href="{% url 'show_delete' show.pk %}">Delete</a>
+        </div>
     </div>
-</div>
 {% endblock %}

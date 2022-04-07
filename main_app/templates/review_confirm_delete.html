@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | Delete Review
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Delete Review</h1>
+
+        <h4>Are you sure you want to delete your review for <strong>{{ review.show.title }}</strong>?</h4>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes - Delete!">
+            <a href="{% url 'reviews_show' review.id %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
