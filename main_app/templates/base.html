@@ -12,6 +12,16 @@
     </head>
     <body>
         <nav>
+            {% if user.is_authenticated %}
+            <span><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></span>
+                <span> | </span>
+            <span><a href="{% url 'logout' %}">Logout</a></span>
+                <span> | </span>
+            {% else %}
+            <span><a href="{% url 'login' %}">Login</a></span>
+                <span> | </span>
+            <span><a href="{% url 'signup' %}">SignUp</a></span>
+            {% endif %}
             <a href="/admin">Admin</a>
             <span> | </span>
             <a href="/">Home</a>
@@ -20,10 +30,11 @@
             <span> | </span>
             <a href="/shows">Shows</a>
             <span> | </span>
+            <a href="/reviews">Reviews</a>
             <form id="search_box">
                 <div>
-                    <!-- this seacrches for dog name -->
-                    <input id="search_bar" type="text" name="title" placeholder="show title"/>
+                    <!-- this seacrches for show title -->
+                    <input id="search_bar" type="text" name="title" placeholder="Show Title"/>
                     <input id="search_sub" type="submit" value="Search"/>
                 </div>
             </form>

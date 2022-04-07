@@ -21,16 +21,8 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = "about.html"
 
-class ShowList(TemplateView):
-    template_name = 'show_idx.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["shows"] = Show.objects.all()
-        return context
-
 class Show_List(TemplateView):
-    template_name = 'showlist.html'
+    template_name = 'show_idx.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,7 +41,7 @@ class Show_List(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class Show_Create(CreateView):
     model = Show
-    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
+    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description']
     template_name = "show_create.html"
     # def get_success_url(self):
     #     return reverse('show_detail', kwargs={'pk': self.object.pk})
@@ -66,7 +58,7 @@ class Show_Detail(DetailView):
 @method_decorator(login_required, name='dispatch')
 class Show_Update(UpdateView):
     model = Show
-    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description', 'thumbs', 'created_at', 'reviews']
+    fields = ['title', 'first_aired', 'last_aired', 'genre', 'stream_service', 'img', 'description']
     template_name = "show_update.html"
     def get_success_url(self):
         return reverse('show_detail', kwargs={'pk': self.object.pk})
@@ -96,14 +88,19 @@ def reviews_show(request, review_id):
 @method_decorator(login_required, name='dispatch')
 class ReviewCreate(CreateView):
     model = Review
-    fields = '__all__'
+    fields = ['body']
     template_name = "review_form.html"
-    success_url = '/reviews'
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.show_id = self.kwargs['pk']
+        self.object.save()
+        return HttpResponseRedirect('/shows')
 
 @method_decorator(login_required, name='dispatch')
 class ReviewUpdate(UpdateView):
     model = Review
-    fields = ['body', 'user', 'date_written']
+    fields = ['body']
     template_name = "review_update.html"
     success_url = '/reviews'
 
