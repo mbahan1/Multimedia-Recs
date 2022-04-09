@@ -2,18 +2,18 @@
 A website for sharing movie and TV show recommendations with family and friends
 
 ## Table of Contents
-[Project Description](##project_description)
-[Project Requirements](##project_requirements)
-[Technologies Used](##technologies_used)
-[Deployment](##deployment)
-[Github Repo](##github_repo)
-[User Stories](##user-stories)  
-[ERD](##erd)  
-[Wireframes](##wireframes)  
-[Color Pallet]()
-[Installation/scripts](##installation/scripts)
-[Sourced Media](##sourced_media)
-[Credits](##credits)
+[Project Description](#project_description)  
+[Project Requirements](#project_requirements)  
+[Technologies Used](#technologies_used)  
+[Deployment](#deployment)  
+[Github Repo](#github_repo)  
+[User Stories](#user-stories)   
+[ERD](#erd)  
+[Wireframes](#wireframes)  
+[Color Pallet]()  
+[Installation/scripts](#installation/scripts)  
+[Sourced Media](#sourced_media)  
+[Credits](#credits)  
 
 ## Credits
 
