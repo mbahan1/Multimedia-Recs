@@ -9,7 +9,7 @@ urlpatterns = [
     path('shows/<int:pk>/', views.Show_Detail.as_view(), name="show_detail"),
     path('shows/<int:pk>/update', views.Show_Update.as_view(), name="show_update"),
     path('shows/<int:pk>/delete', views.Show_Delete.as_view(), name="show_delete"),
-    path('user/<username>/', views.profile, name='profile'),
+    # path('user/<username>/', views.user_show, name='user_show'),
     path('reviews/', views.reviews_index, name='reviews_index'),
     path('reviews/<int:review_id>', views.reviews_show, name='reviews_show'),
     path('reviews/create/<int:pk>', views.ReviewCreate.as_view(), name='reviews_create'),
@@ -19,4 +19,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('signup/', views.signup_view, name='signup'),
     path('thumb/<int:pk>', views.thumb_view, name='thumbs_up'),
+    # path('users/', views.users_index, name='users_index'),
 ]

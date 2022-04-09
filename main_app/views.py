@@ -121,7 +121,6 @@ class ReviewDelete(DeleteView):
 
 # Login, Logout and Signup
 def login_view(request):
-    # if POST, then authenticate the user (submitting the username and password)
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -133,12 +132,12 @@ def login_view(request):
                     login(request, user)
                     return HttpResponseRedirect('/user/'+u)
                 else:
-                    print('The account has been disabled')
-                    # Feel free to redirect them somewhere
+                    return render(request, 'login.html', {'form': form})
             else:
-                print('The username and/or password is incorrect')
+                return render(request, 'login.html', {'form': form})
+        else: 
+            return render(request, 'signup.html', {'form': form})
     else:
-        # user is going to the login page
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
 
@@ -152,15 +151,25 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            print('Hey', user.username)
-            return HttpResponseRedirect('/user/'+str(user.username))
+            print('HEY', user.username)
+            return HttpResponseRedirect('/user/'+str(user))
         else:
-            HttpResponse('<h1>Try again...</h1>')
+            return render(request, 'signup.html', {'form': form})
+
     else:
         form = UserCreationForm()
-        return render(request, 'signup.html', {'form': form}) 
+        return render(request, 'signup.html', {'form': form})
 
 def thumb_view(request, pk):
     show = get_object_or_404(Show, id=request.POST.get('show_id'))
     show.thumbs.add(request.user)
     return HttpResponseRedirect(reverse('show_detail', args=[str(pk)]))
+
+# #Show Users
+# def users_index(request):
+#     # users  = User.objects.all()
+#     # return render(request, 'user_index.html', {'users': users})
+
+# def user_show(request, user_id):
+#     user = User.objects.get(id=user_id)
+#     return render(request, 'user_show.html', {'user': user})
