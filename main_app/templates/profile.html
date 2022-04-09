@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ user.username }}'s Recommended Shows</h1>
+    <h1>{{ username }}'s Recommended Shows</h1>
     {% for show in shows %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ show.title }}</h3>
