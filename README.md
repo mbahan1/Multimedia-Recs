@@ -2,21 +2,18 @@
 A website for sharing movie and TV show recommendations with family and friends
 
 ## Table of Contents
-[Project Description](#project_description)  
-[Project Requirements](#project_requirements)  
-[Technologies Used](#technologies_used)  
+[Project Description](#project-description)  
+[Project Requirements](#project-requirements)  
+[Technologies Used](#technologies-used)  
 [Deployment](#deployment)  
-[Github Repo](#github_repo)  
+[Github Repo](#github-repo)  
 [User Stories](#user-stories)   
 [ERD](#erd)  
 [Wireframes](#wireframes)  
 [Color Pallet]()  
 [Installation/scripts](#installation/scripts)  
-[Sourced Media](#sourced_media)  
+[Sourced Media](#sourced-media)  
 [Credits](#credits)  
-
-## Credits
-
 
 ## Project Description
 Years ago I created a spreadsheet for my extended family to be able to share tv show recommendations, because we have similar (good) taste in multimedia. I plan on improving on that with this project, so that instead of just a massive list, each recommended show or movie can have multiple users endororsing it, and users can add a review as a bonus if they want to (just no spoilers). It will be much easier to see which show or movie you have missed out on and should be next on your list, because you'll be able to see exactly how many users have enjoyed it. Similarly, maybe you'll figure out your tastes align more with a specific other user, and you can browse their page to just see their individual list of recommendations, much like the employee recomendation shelves in the video rental stores of yesteryear. 
@@ -53,7 +50,7 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
 ![User Stories](Planning/user_stories.png "User Stories")
 
 ## ERD
-![ERD](Planning/erd.png "ERD")
+![ERD](Planning/ERD.png "ERD")
 
 ## Wireframes
 ![Landing Page](Planning/wireframes/1_landing_page.png "Landing Page")
