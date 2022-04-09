@@ -54,15 +54,23 @@ class Show(models.Model):
     stream_service = models.CharField(max_length=250, choices = STREAM_CHOICES)
     img = models.CharField(max_length=500)
     description = models.TextField()
-    thumbs = models.IntegerField()
-    user = models.ManyToManyField(User) #m:m
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    thumbs = models.ManyToManyField(User, blank=True, default=None, related_name='show_likes')
+    # thumbs = models.IntegerField()
     # reviews = models.ForeignKey(Review, null=True, blank=True, on_delete=models.CASCADE) #1:m
     created_at = models.DateTimeField(default=timezone.now)
+
+    def total_thumbs(self):
+        return self.thumbs.count()
+
+    # def recced_by(self):
+    #     return self.thumbs.user.username
+
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ['thumbs']
+        ordering = ['title']
 
 class Review(models.Model):
     body = models.TextField()

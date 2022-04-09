@@ -1,5 +1,5 @@
 from dataclasses import fields
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views import View # View class to handle requests
@@ -54,6 +54,15 @@ class Show_Create(CreateView):
 class Show_Detail(DetailView):
     model = Show
     template_name="show_detail.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Show_Detail, self).get_context_data(*args, **kwargs)
+        stuff = get_object_or_404(Show, id=self.kwargs['pk'])
+        total_thumbs = stuff.total_thumbs()
+        # recced_by = stuff.recced_by()
+        # context["recced_by"] = recced_by
+        context["total_thumbs"] = total_thumbs
+        return context 
 
 @method_decorator(login_required, name='dispatch')
 class Show_Update(UpdateView):
@@ -150,3 +159,8 @@ def signup_view(request):
     else:
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form}) 
+
+def thumb_view(request, pk):
+    show = get_object_or_404(Show, id=request.POST.get('show_id'))
+    show.thumbs.add(request.user)
+    return HttpResponseRedirect(reverse('show_detail', args=[str(pk)]))
