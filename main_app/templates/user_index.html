@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | Users
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>All User List</h1>
+        {% for user in users %}
+            <div>
+                <a href="{% url 'user_show' user.id %}">
+                    <div class="card-content">
+                        <strong>{{ user.username }}</strong>
+                    </div>
+                </a>
+            </div>
+            <hr/>
+        {% endfor %}
+</div>
+{% endblock %}
