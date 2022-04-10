@@ -31,7 +31,11 @@
                     {{ user.username }}
                 {% endfor %} -->
             {% for user in show.thumbs.all %}
-                <div>{{user.username}}</div>
+                <div>
+                    <a href="{% url 'profile' user.username %}">
+                        <p>{{ user.username }}</p>
+                    </a>
+                </div>
             {% empty %}
                 <div>{{show.title}} has no Thumbs Up recommendations 😢</div>
             {% endfor %}
@@ -39,18 +43,29 @@
             <a href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
             <p>Reviews:</p>
             {% for review in show.review_set.all %}
-                <strong>{{review.user.username}}:</strong>
-                <div>{{review.body}}</div>
+                <a href="{% url 'profile' review.user.username %}">
+                    <strong>{{ review.user.username }}:</strong>
+                </a>
+                <a href="{% url 'reviews_show' review.id %}">
+                    <span>{{ review.body }}</span>
+                </a>
+                {% if user.username == review.user.username %}
+                    <div>
+                        <a href="{% url 'reviews_update' review.id %}">Edit</a>
+                        <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                    </div>
+                {% endif %}
+                <br>
                 <br>
             {% empty %}
                 <div>{{show.title}} Has No Reviews Yet</div>
                 <br>
             {% endfor %}
         </div>
-
+        <br/>
         <div>
-            <a href="{% url 'show_update' show.pk %}">Update</a>
-            <a href="{% url 'show_delete' show.pk %}">Delete</a>
+            <a href="{% url 'show_update' show.pk %}">Update Show Info</a>
+            <a href="{% url 'show_delete' show.pk %}">Delete Show</a>
         </div>
     </div>
 {% endblock %}

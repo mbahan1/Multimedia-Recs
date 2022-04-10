@@ -56,15 +56,10 @@ class Show(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     thumbs = models.ManyToManyField(User, blank=True, default=None, related_name='show_likes')
-    # thumbs = models.IntegerField()
-    # reviews = models.ForeignKey(Review, null=True, blank=True, on_delete=models.CASCADE) #1:m
     created_at = models.DateTimeField(default=timezone.now)
 
     def total_thumbs(self):
         return self.thumbs.count()
-
-    # def recced_by(self):
-    #     return self.thumbs.user.username
 
     def __str__(self):
         return self.title

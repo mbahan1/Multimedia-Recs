@@ -10,15 +10,24 @@
 <div class="container">
     <h1>All Review List</h1>
         {% for review in reviews %}
-            <div>
-                <a href="{% url 'reviews_show' review.id %}">
-                    <div class="card-content">
+            <div>        
+                <div class="card-content">
+                    <a href="{% url 'show_detail' review.show.id %}">
                         <strong>{{ review.show.title }}</strong>
+                    </a>
+                    <a href="{% url 'profile' review.user.username %}">
                         <p>{{ review.user.username }}:</p>
+                    </a>
+                    <a href="{% url 'reviews_show' review.id %}">
                         <span>{{ review.body }}</span>
-                        
-                    </div>
-                </a>
+                    </a>
+                    {% if user.username == review.user.username %}
+                        <div>
+                            <a href="{% url 'reviews_update' review.id %}">Edit</a>
+                            <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
             <hr/>
         {% endfor %}

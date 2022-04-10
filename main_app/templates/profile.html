@@ -6,10 +6,27 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ username }}'s Recommended Shows</h1>
-    {% for show in shows %}
+    <h2>{{ username }}'s Recommended Shows:</h2>
+    {% for show in user.show_set.all %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ show.title }}</h3>
         </a>
+    {% endfor %}
+    <h2>{{ username }}'s Reviews:</h2>
+    {% for review in user.review_set.all %}
+        <a href="/shows/{{ show.id }}">
+            <h3>{{ review.show.title }}</h3>
+        </a>
+        <div>{{review.body}}</div>
+        {% if user.username == review.user.username %}
+            <div>
+                <a href="{% url 'reviews_update' review.id %}">Edit</a>
+                <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+            </div>
+        {% endif %}
+        <br>
+    {% empty %}
+        <div>{{username}} Has No Reviews Yet</div>
+        <br>
     {% endfor %}
 {% endblock %}

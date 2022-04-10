@@ -19,5 +19,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('signup/', views.signup_view, name='signup'),
     path('thumb/<int:pk>', views.thumb_view, name='thumbs_up'),
-    # path('users/', views.users_index, name='users_index'),
+    path('users/', views.users_index, name='users_index'),
 ]
