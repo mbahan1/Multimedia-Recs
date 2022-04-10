@@ -83,7 +83,8 @@ class Show_Delete(DeleteView):
 def profile(request, username):
     user = User.objects.get(username=username)
     shows = Show.objects.filter(user=user)
-    return render(request, 'profile.html', {'username': username, 'shows': shows})
+    reviews = Review.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'shows': shows, 'reviews': reviews})
 
 #Show Reviews
 def reviews_index(request):
@@ -165,11 +166,10 @@ def thumb_view(request, pk):
     show.thumbs.add(request.user)
     return HttpResponseRedirect(reverse('show_detail', args=[str(pk)]))
 
-# #Show Users
-# def users_index(request):
-#     # users  = User.objects.all()
-#     # return render(request, 'user_index.html', {'users': users})
+#Show Users
+def users_index(request):
+    users  = User.objects.all()
+    return render(request, 'user_index.html', {'users': users})
 
-# def user_show(request, user_id):
-#     user = User.objects.get(id=user_id)
-#     return render(request, 'user_show.html', {'user': user})
+def get_queryset(self):
+    return User.objects.all()

@@ -11,7 +11,7 @@
     <h1>All User List</h1>
         {% for user in users %}
             <div>
-                <a href="{% url 'user_show' user.id %}">
+                <a href="{% url 'profile' user.username %}">
                     <div class="card-content">
                         <strong>{{ user.username }}</strong>
                     </div>

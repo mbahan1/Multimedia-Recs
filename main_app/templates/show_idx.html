@@ -9,7 +9,9 @@
     <a href="{% url 'show_create' %}">Add a Show!</a>
     <h1>All Shows:</h1>
     {% for show in shows %}
-        <img src="{{show.img}}" alt="{{show.title}}" style="max-width: 200px">
+        <a href="{% url 'show_detail' show.pk %}">
+            <img src="{{show.img}}" alt="{{show.title}}" style="max-width: 200px">
+        </a>
         <a href="{% url 'show_detail' show.pk %}">
             <h3>Title: {{show.title}}</h3>
         </a>

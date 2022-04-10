@@ -13,9 +13,11 @@
             <p>By: {{ review.user.username }}</p>
             <p>{{review.body}}</p>
         </div>
-        <div>
-            <a href="{% url 'reviews_update' review.id %}">Edit</a>
-            <a href="{% url 'reviews_delete' review.id %}">Delete</a>
-        </div>
+        {% if user.username == review.user.username %}
+            <div>
+                <a href="{% url 'reviews_update' review.id %}">Edit</a>
+                <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
