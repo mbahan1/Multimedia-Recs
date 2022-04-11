@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | User
+{% endblock %}
+
+{% block content %}
+    <h1>Review Detail</h1>
+    <div>
+        <div>
+            <p>{{ review.show.title }}</p>
+            <p>By: {{ review.user.username }}</p>
+            <p>{{review.body}}</p>
+        </div>
+        <div>
+            <a href="{% url 'reviews_update' review.id %}">Edit</a>
+            <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+        </div>
+    </div>
+{% endblock %}

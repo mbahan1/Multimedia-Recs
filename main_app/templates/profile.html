@@ -7,7 +7,7 @@
 
 {% block content %}
     <br>
-    <h2>My Recommended Shows:</h2>
+    <h2>Your Recommended Shows:</h2>
     {% for show in user.show_set.all %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ show.title }}</h3>
@@ -15,7 +15,7 @@
     {% endfor %}
     <br>
     <br>
-    <h2>My Reviews:</h2>
+    <h2>Your Reviews:</h2>
     {% for review in user.review_set.all %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ review.show.title }}</h3>
