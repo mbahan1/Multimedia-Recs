@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+    <br>
+    <form class="d-flex" id="search_box">
+        <input class="form-control me-2" id="search_bar" type="text" name="title" placeholder="Show Title" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     <a href="{% url 'show_create' %}">Add a Show!</a>
     <h1>All Shows:</h1>
     {% for show in shows %}

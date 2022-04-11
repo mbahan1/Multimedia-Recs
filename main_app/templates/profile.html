@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ username }}'s Recommended Shows:</h2>
+    <br>
+    <h2>My Recommended Shows:</h2>
     {% for show in user.show_set.all %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ show.title }}</h3>
         </a>
     {% endfor %}
-    <h2>{{ username }}'s Reviews:</h2>
+    <br>
+    <br>
+    <h2>My Reviews:</h2>
     {% for review in user.review_set.all %}
         <a href="/shows/{{ show.id }}">
             <h3>{{ review.show.title }}</h3>
