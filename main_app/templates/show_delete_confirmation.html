@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    MediaRecs | Delete Show
+{% endblock %}
+
+{% block content %}
+    <!-- <div class="container">
+        <h1>Are you sure you want to Delete {{show.title}}?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value "Confirm"/>
+            <a href="{% url 'show_detail' show.pk %}">Cancel</a>
+        </form>
+    </div> -->
+
+
+    <br>
+    <div class="container" id="center">
+        <h1>Delete Show</h1>
+
+        <h5>Are you sure you want to delete <strong>{{ show.title }}</strong>?</h5>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-secondary" type="submit" value="Yes - Delete!">
+            <a class="btn btn-secondary" href="{% url 'show_detail' show.pk %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
