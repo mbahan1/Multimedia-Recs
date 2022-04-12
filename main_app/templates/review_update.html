@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    MediaRecs | Edit Review
+    BahanMedia | Edit Review
 {% endblock %}
 
 {% block content %}
@@ -14,15 +14,17 @@
                 <h3>Update your review for {{ review.show.title }}</h3>
             </div>
             <hr>
-            <form action="" method="post">
-                {% csrf_token %}
-                <table>
-                    {{form.as_table}}
-                </table>
-                <div id="centered">
-                    <input class="btn btn-secondary" type="submit" value="Update">
-                </div>
-            </form>
+            <div id="centered">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{form|crispy}}
+                    </table>
+                    <div id="centered">
+                        <input class="btn btn-secondary" type="submit" value="Update">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

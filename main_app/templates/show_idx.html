@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block title %}
-    MediaRecs | Shows
+    BahanMedia | Shows
 {% endblock %}
 
 {% block content %}
     <br>
-    <div class="row">
-        <div class="w-50 mx-auto">
+    <div class="row" id="search-div">
+        <div class="container-sm">
             <form class="d-flex" id="search_box">
                 <input class="form-control me-2" id="search_bar" type="text" name="title" placeholder="Show Title" aria-label="Search"/>
                 <button class="btn btn-secondary" type="submit">Search</button>

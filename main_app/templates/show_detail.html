@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block title %}
-    MediaRecs | Show Info
+    BahanMedia | Show Info
 {% endblock %}
 
 {% block content %}
-    <div class="container" id="show-det-cont">
+    <div class="container-fluid" id="show-det-cont">
         <br>
-        <div>
-            <img class="img-fluid img-thumbnail" id="show-det-img" src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
+        <div class="container-fluid">
+            <img class="img-fluid" id="show-det-img" src="{{show.img}}" alt="picture of {{show.title}}">
         </div>
         <br>
         <h4>{{show.title}}</h4>

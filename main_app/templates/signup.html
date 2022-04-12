@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    MediaRecs | Signup
+    BahanMedia | Signup
 {% endblock %}
 
 {% block content %}
@@ -11,6 +11,10 @@
     <div class="container" id="center">
         <div class="no-bullets">
         <h1>Sign up</h1>
+        <br>
+        <h5>
+            Your username is your display name, so make it something like your name or a common nickname so other users will be able to know it's you: get credit for being the tastemaker you are.
+        </h5>
         <br>
         <form action="" method="post">
             {% csrf_token %}
