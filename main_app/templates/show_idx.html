@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-    <div "d-flex justify-content-center"></div>
     <br>
     <div class="row">
         <div class="w-50 mx-auto">
@@ -21,7 +20,7 @@
         <a class="btn btn-secondary" href="{% url 'show_create' %}">Add a Show!</a>
     </div>
     <br>
-    <h3 class="d-flex justify-content-center flex-nowrap">All Shows:</h3>
+    <h3 class="d-flex justify-content-center flex-nowrap">All Shows</h3>
     {% for show in shows %}
         <div class="d-flex mt-5 justify-content-center">
             <div class="card text-white bg-dark mb-3" style="max-width: 800px;">
@@ -43,18 +42,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="text-center" max-width=20px max-height="auto">
-            <img href="{% url 'show_detail' show.pk %}" src="{{show.img}}" class="img-fluid" alt="{{show.title}}">
-        </div>
-        <br>
-        <div class="text-center">
-            <a href="{% url 'show_detail' show.pk %}">
-                <h4>{{show.title}}</h4>
-            </a>
-            <h5>{{show.get_genre_display}}</h5>
-            <p>{{show.description}}</p>
-        </div>
-        <br> -->
     {% endfor %}
-    
 {% endblock %}

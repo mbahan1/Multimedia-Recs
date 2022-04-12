@@ -14,3 +14,17 @@ body {
 #title-link{
     color: white;
 }
+#show-det-cont{
+    text-align: center;
+    max-width: 700px;
+}
+#show-det-img{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: black;
+}
+#centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

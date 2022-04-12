@@ -8,28 +8,30 @@
 {% block content %}
 
 <div class="container">
-    <h1>All Review List</h1>
+    <br>
+    <h3 align="center">All Review List</h3>
+    <hr>
+    <div>
         {% for review in reviews %}
-            <div>        
                 <div class="card-content">
-                    <a href="{% url 'show_detail' review.show.id %}">
+                    <div>
                         <strong>{{ review.show.title }}</strong>
-                    </a>
-                    <a href="{% url 'profile' review.user.username %}">
+                    </div>
+                    <div>
                         <p>{{ review.user.username }}:</p>
-                    </a>
-                    <a href="{% url 'reviews_show' review.id %}">
+                    </div>
+                    <div>
                         <span>{{ review.body }}</span>
-                    </a>
+                    </div>
                     {% if user.username == review.user.username %}
                         <div>
-                            <a href="{% url 'reviews_update' review.id %}">Edit</a>
-                            <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                            <a class="btn btn-secondary btn-sm" href="{% url 'reviews_update' review.id %}">Edit</a>
+                            <a class="btn btn-secondary btn-sm" href="{% url 'reviews_delete' review.id %}">Delete</a>
                         </div>
                     {% endif %}
                 </div>
-            </div>
             <hr/>
         {% endfor %}
+    </div>
 </div>
 {% endblock %}

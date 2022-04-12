@@ -6,64 +6,67 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container" id="show-det-cont">
+        <br>
         <div>
-            <img src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
+            <img class="img-fluid img-thumbnail" id="show-det-img" src="{{show.img}}" alt="picture of {{show.title}}" style="max-width: 400px">
         </div>
-            <h3>Title: {{show.title}}</h3>
-            {% if show.first_aired == show.last_aired %}
-                <h3>Aired: {{show.first_aired}}</h3>
-            {% else %}
-                <h3>Aired: {{show.first_aired}} - {{show.last_aired}}</h3>
-            {% endif %}
-            <h3>Genre: {{show.get_genre_display}}</h3>
-            <h3>Where to watch: {{show.get_stream_service_display}}</h3>
-            <h3>Description: {{show.description}}</h3>
-            <br/>
-            <br/>
-            <form action="{% url 'thumbs_up' show.pk %}" method="POST">
-                {% csrf_token %}
-                <button type="submit", name="show_id", value="{{ show.id }}">Give Thumbs Up!</button>
-                 - {{total_thumbs}} Thumbs Up
-            </form>
-            <p>Recommended by: 
-                <!-- {% for user in show.thumbs.all %}
-                    {{ user.username }}
-                {% endfor %} -->
-            {% for user in show.thumbs.all %}
-                <div>
-                    <p>{{ user.username }}</p>
-                </div>
-            {% empty %}
-                <div>{{show.title}} has no Thumbs Up recommendations 😢</div>
-            {% endfor %}
-            </p>
-            <a href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
-            <p>Reviews:</p>
-            {% for review in show.review_set.all %}
-                <a href="{% url 'profile' review.user.username %}">
-                    <strong>{{ review.user.username }}:</strong>
-                </a>
-                <a href="{% url 'reviews_show' review.id %}">
-                    <span>{{ review.body }}</span>
-                </a>
+        <br>
+        <h4>{{show.title}}</h4>
+        {% if show.first_aired == show.last_aired %}
+            <h6>{{show.first_aired}}</h6>
+        {% else %}
+            <h6>{{show.first_aired}} - {{show.last_aired}}</h6>
+        {% endif %}
+        <h6>{{show.get_genre_display}}</h6>
+        <h6>Where to watch: {{show.get_stream_service_display}}</h6>
+        <p>{{show.description}}</p>
+        <hr>
+        <form action="{% url 'thumbs_up' show.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit", name="show_id", value="{{ show.id }}">Give Thumbs Up! <span class="bi bi-hand-thumbs-up"></span></button>
+            <br>
+            <br>
+            {{total_thumbs}} Thumbs Up
+        </form>
+        <p>Recommended by: 
+        {% for user in show.thumbs.all %}
+            <div>
+                <span>{{ user.username }}</span> 
+                <span class="bi bi-hand-thumbs-up"></span>
+            </div>
+        {% empty %}
+            <div>{{show.title}} has no Thumbs Up recommendations 😢</div>
+        {% endfor %}
+        </p>
+        <hr>
+        <a class="btn btn-secondary" href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
+        <br>
+        <br>
+        <p>Reviews:</p>
+        {% for review in show.review_set.all %}
+            <div>
+                <strong>{{ review.user.username }}:</strong>
+                <span>{{ review.body }}</span>
                 {% if user.username == review.user.username %}
                     <div>
-                        <a href="{% url 'reviews_update' review.id %}">Edit</a>
-                        <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                        <a class="btn btn-secondary btn-sm" href="{% url 'reviews_update' review.id %}">Edit</a>
+                        <a class="btn btn-secondary btn-sm" href="{% url 'reviews_delete' review.id %}">Delete</a>
                     </div>
                 {% endif %}
-                <br>
-                <br>
-            {% empty %}
-                <div>{{show.title}} Has No Reviews Yet</div>
-                <br>
-            {% endfor %}
-        </div>
-        <br/>
-        <div>
-            <a href="{% url 'show_update' show.pk %}">Update Show Info</a>
-            <a href="{% url 'show_delete' show.pk %}">Delete Show</a>
-        </div>
+            </div>
+            <br>
+        {% empty %}
+            <div>{{show.title}} Has No Reviews Yet</div>
+            <br>
+        {% endfor %}
+        {% if user.username == show.user.username %}
+            <hr>
+            <div>
+                <a class="btn btn-secondary btn-sm" href="{% url 'show_update' show.pk %}">Update Show Info</a>
+                <a class="btn btn-secondary btn-sm" href="{% url 'show_delete' show.pk %}">Delete Show</a>
+            </div>
+            <hr>
+        {% endif %}
     </div>
 {% endblock %}
