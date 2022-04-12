@@ -32,9 +32,7 @@
                 {% endfor %} -->
             {% for user in show.thumbs.all %}
                 <div>
-                    <a href="{% url 'profile' user.username %}">
-                        <p>{{ user.username }}</p>
-                    </a>
+                    <p>{{ user.username }}</p>
                 </div>
             {% empty %}
                 <div>{{show.title}} has no Thumbs Up recommendations 😢</div>

@@ -1,4 +1,16 @@
 body {
-    background-color: lightblue;
-    color: darkblue;
+    background-color: #555555;
+    color: lightblue;
+}
+#idx-img{
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+}
+#idx-card{
+    display: flex;
+    align-items: center;
+}
+#title-link{
+    color: white;
 }
