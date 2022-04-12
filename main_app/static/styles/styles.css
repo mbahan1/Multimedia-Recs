@@ -20,9 +20,10 @@ body {
     max-width: 700px;
 }
 #show-det-img{
-    border: 1px solid black;
+    border: 5px solid black;
     border-radius: 10px;
     background-color: black;
+    /* max-width: 400px; */
 }
 #centered{
     display: flex;
@@ -60,3 +61,14 @@ ul {
 #search_bar{
     background-color:lightblue;
 }
+#search-div{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 500px !important;
+}
+@media (min-width: 767.98px) {
+    #show-det-img {
+      max-width: 500px !important;
+    }
+  }
+

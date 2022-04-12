@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    MediaRecs | Add Show
+    BahanMedia | Add Show
 {% endblock %}
 
 {% block content %}
@@ -11,14 +11,19 @@
     <div class="container" id="center">
         <h1>Add a Show!</h1>
         <br>
-        <form method="post">
-            {% csrf_token %} 
-            {{ form|crispy }} 
-            <input class="btn btn-secondary" type="submit" value="Submit" />
-        </form>
+        <h6>Images should be landscape orientation, and 500px wide or larger.</h6>
+        <h6>I recommend IMDB for show info, and the JustWatch app to find streaming services.</h6>
         <hr>
-        <h3>Alternatively,</h3>
-        <h3>just send me an email of the title and I can add it</h3>
-        <a style="color:lightblue;" href="mailto:bahanm@gmail.com?subject=NEW SHOW FOR BAHAN FAMILY MEDIA RECS!"><h3>Email Michelle</h3></a>
+        <h6>Alternatively,</h6>
+        <h6>just send me an email of the title and I can add it.</h6>
+        <a style="color:lightblue;" href="mailto:bahanm@gmail.com?subject=NEW SHOW FOR BAHAN FAMILY MEDIA RECS!"><h5>Email Michelle!</h5></a>
+        <hr>
+        <div id="centered">
+            <form method="post">
+                {% csrf_token %} 
+                {{ form|crispy }} 
+                <input class="btn btn-secondary" type="submit" value="Submit" />
+            </form>
+        </div>
     </div>
 {% endblock %}
