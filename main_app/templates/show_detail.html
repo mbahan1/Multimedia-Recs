@@ -22,13 +22,17 @@
         <h6>Where to watch: {{show.get_stream_service_display}}</h6>
         <p>{{show.description}}</p>
         <hr>
-        <form action="{% url 'thumbs_up' show.pk %}" method="POST">
-            {% csrf_token %}
-            <button class="btn btn-secondary" type="submit", name="show_id", value="{{ show.id }}">Give Thumbs Up! <span class="bi bi-hand-thumbs-up"></span></button>
-            <br>
-            <br>
-            {{total_thumbs}} Thumbs Up
-        </form>
+        {% if user.is_authenticated %}
+            <div>
+                <form action="{% url 'thumbs_up' show.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary" type="submit", name="show_id", value="{{ show.id }}">Give Thumbs Up! <span class="bi bi-hand-thumbs-up"></span></button>
+                    <br>
+                    <br>
+                    {{total_thumbs}} Thumbs Up
+                </form>
+            </div>
+        {% endif %}
         <p>Recommended by: 
         {% for user in show.thumbs.all %}
             <div>
@@ -40,9 +44,12 @@
         {% endfor %}
         </p>
         <hr>
-        <a class="btn btn-secondary" href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
-        <br>
-        <br>
+        {% if user.is_authenticated %}
+            <div>
+                <a class="btn btn-secondary" href="{% url 'reviews_create' pk=show.pk%}">Add Review</a>
+            </div>
+            <br>
+        {% endif %}
         <p>Reviews:</p>
         {% for review in show.review_set.all %}
             <div>

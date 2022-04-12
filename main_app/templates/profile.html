@@ -10,9 +10,9 @@
     <div class="container" id="center">
     <h3>Your Recommended Shows</h3>
     <br>
-    {% for show in user.show_set.all %}
-        <a href="/shows/{{ show.id }}">
-            <h5 style="color:white;">{{ show.title }}</h5>
+    {% for thumb in thumbs %}
+        <a href="/shows/{{ thumb.id }}">
+            <h5 style="color:white;">{{ thumb.title }}</h5>
         </a>
     {% endfor %}
     <hr>
