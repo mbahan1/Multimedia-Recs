@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     MediaRecs | Show Update
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Update {{show.title}}</h1>
+    <br>
+    <div class="container" id="center">
+        <h1>Update {{show.title}} Show Info</h1>
         <form action="" method="post">
             {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Submit">
+            {{ form|crispy }}
+            <input class="btn btn-secondary" type="submit" value="Submit">
         </form>
     </div>
 {% endblock %}

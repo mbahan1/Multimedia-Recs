@@ -6,13 +6,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <form action="" method="post">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type="submit" value="Submit!">
-        </form>
+    <br>
+    <div class="container" id="center">
+        <div>
+            <h1>Add Review</h1>
+        </div>
+        <hr>
+        <div id="centered">
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <div id="centered">
+                    <input class="btn btn-secondary" type="submit" value="Submit!">
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

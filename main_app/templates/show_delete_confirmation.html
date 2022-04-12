@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block title %}
-    MediaRecs | Delete Review
+    MediaRecs | Delete Show
 {% endblock %}
 
 {% block content %}
     <br>
     <div class="container" id="center">
-        <h1>Delete Review</h1>
+        <h1>Delete Show</h1>
 
-        <h5>Are you sure you want to delete your review for <strong>{{ review.show.title }}</strong>?</h5>
+        <h5>Are you sure you want to delete <strong>{{ show.title }}</strong>?</h5>
 
         <form action="" method="POST">
             {% csrf_token %}
             <input class="btn btn-secondary" type="submit" value="Yes - Delete!">
-            <a class="btn btn-secondary" href="{% url 'reviews_show' review.id %}">Cancel</a>
+            <a class="btn btn-secondary" href="{% url 'show_detail' show.pk %}">Cancel</a>
         </form>
     </div>
 {% endblock %}

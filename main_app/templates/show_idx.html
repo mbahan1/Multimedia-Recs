@@ -7,19 +7,40 @@
 
 {% block content %}
     <br>
-    <form class="d-flex" id="search_box">
-        <input class="form-control me-2" id="search_bar" type="text" name="title" placeholder="Show Title" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <a href="{% url 'show_create' %}">Add a Show!</a>
-    <h1>All Shows:</h1>
+    <div class="row">
+        <div class="w-50 mx-auto">
+            <form class="d-flex" id="search_box">
+                <input class="form-control me-2" id="search_bar" type="text" name="title" placeholder="Show Title" aria-label="Search"/>
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center flex-nowrap">
+        <a class="btn btn-secondary" href="{% url 'show_create' %}">Add a Show!</a>
+    </div>
+    <br>
+    <h3 class="d-flex justify-content-center flex-nowrap">All Shows</h3>
     {% for show in shows %}
-        <a href="{% url 'show_detail' show.pk %}">
-            <img src="{{show.img}}" alt="{{show.title}}" style="max-width: 200px">
-        </a>
-        <a href="{% url 'show_detail' show.pk %}">
-            <h3>Title: {{show.title}}</h3>
-        </a>
-        <h4>Genre: {{show.get_genre_display}}</h4>
+        <div class="d-flex mt-5 justify-content-center">
+            <div class="card text-white bg-dark mb-3" style="max-width: 800px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4" id="idx-img">
+                        <a href="{% url 'show_detail' show.pk %}">
+                            <img class="img-fluid rounded-center" src="{{show.img}}" alt="{{show.title}}">
+                        </a>
+                    </div>
+                    <div class="col-md-8" id="idx-card">
+                        <div class="card-body">
+                            <a style="color:lightblue;" href="{% url 'show_detail' show.pk %}">
+                                <h4 class="card-title" id="title-link">{{show.title}}</h4>
+                            </a>
+                            <h6 class="card-title">{{show.get_genre_display}}</h6>
+                            <p class="card-text">{{show.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}

@@ -84,7 +84,8 @@ def profile(request, username):
     user = User.objects.get(username=username)
     shows = Show.objects.filter(user=user)
     reviews = Review.objects.filter(user=user)
-    return render(request, 'profile.html', {'username': username, 'shows': shows, 'reviews': reviews})
+    thumbs = Show.objects.filter(thumbs__in=[user])
+    return render(request, 'profile.html', {'username': username, 'shows': shows, 'reviews': reviews, 'thumbs':thumbs})
 
 #Show Reviews
 def reviews_index(request):
@@ -144,7 +145,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/shows')
+    return HttpResponseRedirect('/')
 
 def signup_view(request):
     if request.method == 'POST':
@@ -166,10 +167,12 @@ def thumb_view(request, pk):
     show.thumbs.add(request.user)
     return HttpResponseRedirect(reverse('show_detail', args=[str(pk)]))
 
-#Show Users
-def users_index(request):
-    users  = User.objects.all()
-    return render(request, 'user_index.html', {'users': users})
 
-def get_queryset(self):
-    return User.objects.all()
+
+#Show Users
+# def users_index(request):
+#     users  = User.objects.all()
+#     return render(request, 'user_index.html', {'users': users})
+
+# def get_queryset(self):
+#     return User.objects.all()

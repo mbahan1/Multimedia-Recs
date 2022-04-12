@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     MediaRecs | Add Show
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <br>
+    <div class="container" id="center">
         <h1>Add a Show!</h1>
-        
+        <br>
         <form method="post">
             {% csrf_token %} 
-            {{form.as_p}} 
-            <input type="submit" value="Submit" />
+            {{ form|crispy }} 
+            <input class="btn btn-secondary" type="submit" value="Submit" />
         </form>
+        <hr>
+        <h3>Alternatively,</h3>
+        <h3>just send me an email of the title and I can add it</h3>
+        <a style="color:lightblue;" href="mailto:bahanm@gmail.com?subject=NEW SHOW FOR BAHAN FAMILY MEDIA RECS!"><h3>Email Michelle</h3></a>
     </div>
 {% endblock %}
