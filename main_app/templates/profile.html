@@ -7,33 +7,36 @@
 
 {% block content %}
     <br>
-    <h3>Your Recommended Shows:</h3>
+    <div class="container" id="center">
+    <h3>Your Recommended Shows</h3>
+    <br>
     {% for show in user.show_set.all %}
         <a href="/shows/{{ show.id }}">
-            <h5>{{ show.title }}</h5>
+            <h5 style="color:white;">{{ show.title }}</h5>
         </a>
     {% endfor %}
+    <hr>
+    <h3>Your Reviews</h3>
     <br>
-    <br>
-    <h3>Your Reviews:</h3>
     {% for review in user.review_set.all %}
         <div>
             <a href="/shows/{{ show.id }}">
-                <span class="h5">{{ review.show.title }}</span>
+                <span class="h5" style="color:white;">{{ review.show.title }}</span>
             </a>
             <span class="h5"> - </span>
             <span class="h6">{{review.body}}</span>
         </div>
         {% if user.username == review.user.username %}
             <div>
-                <a href="{% url 'reviews_update' review.id %}">Edit</a>
-                <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                <a class="btn btn-secondary btn-sm" href="{% url 'reviews_update' review.id %}">Edit</a>
+                <a class="btn btn-secondary btn-sm" href="{% url 'reviews_delete' review.id %}">Delete</a>
             </div>
         {% endif %}
-        
         <br>
     {% empty %}
         <div>{{username}} Has No Reviews Yet</div>
         <br>
     {% endfor %}
+    <hr>
+    </div>
 {% endblock %}

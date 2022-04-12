@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" id="center">
     <br>
     <h3 align="center">All Review List</h3>
     <hr>
@@ -15,13 +15,12 @@
         {% for review in reviews %}
                 <div class="card-content">
                     <div>
-                        <strong>{{ review.show.title }}</strong>
+                        <a href="/shows/{{ review.show.pk }}">
+                            <h5 style="color:lightblue;">{{ review.show.title }}</h5>
+                        </a>
                     </div>
                     <div>
-                        <p>{{ review.user.username }}:</p>
-                    </div>
-                    <div>
-                        <span>{{ review.body }}</span>
+                        <p>{{ review.user.username }} - {{ review.body }}</p>
                     </div>
                     {% if user.username == review.user.username %}
                         <div>

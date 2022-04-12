@@ -6,15 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <br>
+    <div class="container" id="center">
         <h1>Delete Review</h1>
 
-        <h4>Are you sure you want to delete your review for <strong>{{ review.show.title }}</strong>?</h4>
+        <h5>Are you sure you want to delete your review for <strong>{{ review.show.title }}</strong>?</h5>
 
         <form action="" method="POST">
             {% csrf_token %}
-            <input type="submit" value="Yes - Delete!">
-            <a href="{% url 'reviews_show' review.id %}">Cancel</a>
+            <input class="btn btn-secondary" type="submit" value="Yes - Delete!">
+            <a class="btn btn-secondary" href="{% url 'reviews_show' review.id %}">Cancel</a>
         </form>
     </div>
 {% endblock %}

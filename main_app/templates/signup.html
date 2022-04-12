@@ -6,10 +6,13 @@
 {% endblock %}
 
 {% block content %}
-   <h1>Sign up</h1>
-   <form action="" method="post">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <input type="submit" value="Sign up">
-   </form>
+    <br>
+    <div class="container" id="center">
+        <h1>Sign up</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Sign up">
+        </form>
+    </div>
 {% endblock %}

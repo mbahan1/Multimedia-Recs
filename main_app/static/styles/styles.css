@@ -28,3 +28,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+#center{
+    margin: auto;
+    text-align: center;
+}

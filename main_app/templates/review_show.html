@@ -6,18 +6,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Review Detail</h1>
-    <div>
+    <br>
+    <div class="container" id="center">
+        <h1>Review Detail</h1>
         <div>
-            <p>{{ review.show.title }}</p>
-            <p>By: {{ review.user.username }}</p>
-            <p>{{review.body}}</p>
-        </div>
-        {% if user.username == review.user.username %}
             <div>
-                <a href="{% url 'reviews_update' review.id %}">Edit</a>
-                <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+                <p>{{ review.show.title }}</p>
+                <p>By: {{ review.user.username }}</p>
+                <p>{{review.body}}</p>
             </div>
-        {% endif %}
+            {% if user.username == review.user.username %}
+                <div>
+                    <a class="btn btn-secondary btn-sm" href="{% url 'reviews_update' review.id %}">Edit</a>
+                    <a class="btn btn-secondary btn-sm" href="{% url 'reviews_delete' review.id %}">Delete</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
