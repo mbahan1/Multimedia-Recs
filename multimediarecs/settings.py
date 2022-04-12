@@ -76,7 +76,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'crispy_forms',
+    "crispy_forms",
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
