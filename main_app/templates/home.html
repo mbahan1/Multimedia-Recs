@@ -6,7 +6,17 @@
 {% endblock %}
 
 {% block content %}
+    <br>
     <div class="container" id="home">
-        <h1>Welcome to MediaRecs!</h1>
+        <div>
+            <h1 id="center">Welcome to Bahan Media Recs!</h1>
+            <hr>
+        </div>
+        <div class="narrow" id="center">
+            <br>
+            <h5>What started as a spreadsheet that I sporadically updated to add shows recommended by family members has gotten an upgrade.</h5>
+            <br>
+            <h5>Feel free to browse the list of shows and reviews, and <span><a id="link" href="{% url 'signup' %}">SignUp</a></span> or <span><a id="link" href="{% url 'login' %}">LogIn</a></span> you want to add your own recommendations or reviews.</h5>
+        </div>
     </div>
 {% endblock %}

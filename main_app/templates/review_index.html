@@ -15,8 +15,8 @@
         {% for review in reviews %}
                 <div class="card-content">
                     <div>
-                        <a href="/shows/{{ review.show.pk }}">
-                            <h5 style="color:lightblue;">{{ review.show.title }}</h5>
+                        <a id="titles" href="/shows/{{ review.show.pk }}">
+                            <h5 id="titles">{{ review.show.title }}</h5>
                         </a>
                     </div>
                     <div>
