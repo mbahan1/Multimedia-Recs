@@ -2,32 +2,31 @@
 {% load static %}
 
 {% block title %}
-    BahanMedia | Profile
+    BahanMedia | {{name}}
 {% endblock %}
 
 {% block content %}
     <br>
     <div class="container" id="center">
-    <h3>Your Recommended Shows</h3>
+    <h3>{{name}}'s Recommended Shows</h3>
     <br>
     {% for thumb in thumbs %}
         <a style="color:lightblue;" href="/shows/{{ thumb.id }}">
-            <strong style="color:lightblue;">{{ thumb.title }}</strong>
-            <br>
+            <h5 style="color:lightblue;">{{ thumb.title }}</h5>
         </a>
     {% endfor %}
     <hr>
-    <h3>Your Reviews</h3>
+    <h3>{{name}}'s Reviews</h3>
     <br>
-    {% for review in user.review_set.all %}
+    {% for review in bahan.review_set.all %}
         <div>
             <a style="color:lightblue;" href="/shows/{{ show.id }}">
-                <span style="color:lightblue;"><strong>{{ review.show.title }}</strong></span>
+                <span class="h5" style="color:lightblue;" >{{ review.show.title }}</span>
             </a>
-            <span> - </span>
-            <span>{{review.body}}</span>
+            <span class="h5"> - </span>
+            <span class="h6">{{review.body}}</span>
         </div>
-        {% if user.username == review.user.username %}
+        {% if bahan.username == user.username %}
             <div>
                 <a class="btn btn-secondary btn-sm" href="{% url 'reviews_update' review.id %}">Edit</a>
                 <a class="btn btn-secondary btn-sm" href="{% url 'reviews_delete' review.id %}">Delete</a>
@@ -35,7 +34,7 @@
         {% endif %}
         <br>
     {% empty %}
-        <div>{{username}} Has No Reviews Yet</div>
+        <div>{{name}} Has No Reviews Yet</div>
         <br>
     {% endfor %}
     <hr>
