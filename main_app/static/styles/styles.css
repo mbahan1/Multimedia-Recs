@@ -66,6 +66,12 @@ ul {
     margin-left: auto;
     max-width: 500px !important;
 }
+#user-link{
+    padding: 10px;
+}
+#user-link > * {
+    color:lightblue;
+}
 @media (min-width: 767.98px) {
     #show-det-img {
       max-width: 500px !important;

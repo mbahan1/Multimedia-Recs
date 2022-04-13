@@ -37,7 +37,7 @@ Years ago I created a spreadsheet for my extended family to be able to share tv 
     - PostgreSQL 
     - Bootstrap  
     - Heroku
-    - Miro and Draw.io for planning
+    - Miro and Draw.io for planning 
 
 ## Deployment
 [https://two-thumbs-up.herokuapp.com/](https://two-thumbs-up.herokuapp.com/)

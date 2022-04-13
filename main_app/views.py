@@ -59,8 +59,6 @@ class Show_Detail(DetailView):
         context = super(Show_Detail, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(Show, id=self.kwargs['pk'])
         total_thumbs = stuff.total_thumbs()
-        # recced_by = stuff.recced_by()
-        # context["recced_by"] = recced_by
         context["total_thumbs"] = total_thumbs
         return context 
 
@@ -167,12 +165,15 @@ def thumb_view(request, pk):
     show.thumbs.add(request.user)
     return HttpResponseRedirect(reverse('show_detail', args=[str(pk)]))
 
-
-
 #Show Users
-# def users_index(request):
-#     users  = User.objects.all()
-#     return render(request, 'user_index.html', {'users': users})
+def users_index(request):
+    users  = User.objects.all()
+    return render(request, 'user_index.html', {'users': users})
 
-# def get_queryset(self):
-#     return User.objects.all()
+@login_required #because it isn't a class, just a function
+def user_display(request, name):
+    bahan = User.objects.get(username=name)
+    # bahan = get_object_or_404(User, name=name)
+    reviews = Review.objects.filter(user=bahan)
+    thumbs = Show.objects.filter(thumbs__in=[bahan])
+    return render(request, 'user_display.html', {'name': name, 'bahan': bahan, 'reviews': reviews, 'thumbs':thumbs})

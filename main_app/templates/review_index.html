@@ -14,13 +14,20 @@
     <div>
         {% for review in reviews %}
                 <div class="card-content">
-                    <div>
+                    <!-- <div>
                         <a id="titles" href="/shows/{{ review.show.pk }}">
                             <h5 id="titles">{{ review.show.title }}</h5>
                         </a>
-                    </div>
+                    </div> -->
                     <div>
-                        <p>{{ review.user.username }} - {{ review.body }}</p>
+                        <div>
+                            <a id="title-link" href="/shows/{{ review.show.pk }}">{{ review.show.title }}</a>
+                             | 
+                            <a id="title-link" href="{% url 'user_display' review.user.username %}">{{ review.user.username }}</a>
+                        </div>    
+                        <p>
+                            {{ review.body }}
+                        </p>
                     </div>
                     {% if user.username == review.user.username %}
                         <div>
