@@ -54,7 +54,7 @@ class Show(models.Model):
     stream_service = models.CharField(max_length=250, choices = STREAM_CHOICES)
     img = models.CharField(max_length=500)
     description = models.TextField()
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.SET_DEFAULT, default=None, null=True)
     thumbs = models.ManyToManyField(User, blank=True, default=None, related_name='show_likes')
     created_at = models.DateTimeField(default=timezone.now)
 
