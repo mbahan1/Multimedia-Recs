@@ -167,7 +167,7 @@ def thumb_view(request, pk):
 
 #Show Users
 def users_index(request):
-    users  = User.objects.all()
+    users = User.objects.filter(is_superuser=False, is_staff=False)
     return render(request, 'user_index.html', {'users': users})
 
 @login_required #because it isn't a class, just a function
